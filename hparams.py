@@ -9,7 +9,7 @@ def create_hparams(hparams_string=None, verbose=False):
         ################################
         # Experiment Parameters        #
         ################################
-        epochs=500,
+        epochs=10000,
         iters_per_checkpoint=1000,
         seed=1234,
         dynamic_loss_scaling=True,
@@ -19,15 +19,15 @@ def create_hparams(hparams_string=None, verbose=False):
         dist_url="tcp://localhost:54321",
         cudnn_enabled=True,
         cudnn_benchmark=False,
-        ignore_layers=['embedding.weight'],
+        ignore_layers=[''],
 
         ################################
         # Data Parameters             #
         ################################
-        load_mel_from_disk=False,
+        load_mel_from_disk=True,
         training_files='filelists/ljs_audio_text_train_filelist.txt',
         validation_files='filelists/ljs_audio_text_val_filelist.txt',
-        text_cleaners=['english_cleaners'],
+        text_cleaners=['basic_cleaners'],
 
         ################################
         # Audio Parameters             #
@@ -57,7 +57,7 @@ def create_hparams(hparams_string=None, verbose=False):
         decoder_rnn_dim=1024,
         prenet_dim=256,
         max_decoder_steps=1000,
-        gate_threshold=0.5,
+        gate_threshold=0.1,
         p_attention_dropout=0.1,
         p_decoder_dropout=0.1,
 
